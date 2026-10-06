@@ -1,51 +1,40 @@
-import { useEffect, useState } from 'react';
+
 import './App.css';
 
 function App() {
-    const [forecasts, setForecasts] = useState();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
     return (
         <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+            <nav>
+                <h2>Liam Flaherty</h2>
+
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <main>
+                <section>
+                    <h1>Hi, I'm Liam.</h1>
+                    <h2>I'm a software engineer and web developer.</h2>
+                    <p>Welcome to my personal website! Here you can learn more about me, see some of my projects, and get in touch.</p>
+
+                </section>
+
+                <section id="projects">
+                    <h2>Projects</h2>
+                    <div className="project">
+                        <h3>Project 1</h3>
+                        <p>Description of project 1.</p>
+                    </div>
+                    <div className="project">
+                        <h3>Project 2</h3>
+                        <p>Description of project 2.</p>
+                    </div>
+            </main>
+
+
         </div>
-    );
-    
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        if (response.ok) {
-            const data = await response.json();
-            setForecasts(data);
-        }
-    }
+   )
 }
 
 export default App;
